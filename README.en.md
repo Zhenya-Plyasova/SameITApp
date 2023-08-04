@@ -1,6 +1,6 @@
 # name
 
-This App was created ...
+This App was created 
 
 Technologies Stack:
 HTML

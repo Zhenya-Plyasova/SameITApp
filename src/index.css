@@ -7,10 +7,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-text-align: initial !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
 }
 
 a {

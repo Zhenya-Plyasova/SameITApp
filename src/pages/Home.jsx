@@ -1,5 +1,3 @@
-import manyUsers from "../img/many-users.jpg";
-
 const Home = () => {
     return (
       <>
@@ -15,7 +13,6 @@ const Home = () => {
           <h1>
             Welcome to the APP!
           </h1>
-          <img src={manyUsers} with = 'auto' height='450px' alt='net of people'></img>
         </div>
       </>
     );
