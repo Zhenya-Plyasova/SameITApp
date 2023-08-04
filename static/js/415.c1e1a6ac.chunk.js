@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksame_it_app=self.webpackChunksame_it_app||[]).push([[415],{415:function(e,t,n){n.r(t);var i=n(184);t.default=function(){return(0,i.jsx)(i.Fragment,{children:(0,i.jsx)("div",{style:{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"space-between",marginBottom:"100px"},children:(0,i.jsx)("h1",{children:"Welcome to the APP!"})})})}}}]);
+//# sourceMappingURL=415.c1e1a6ac.chunk.js.map

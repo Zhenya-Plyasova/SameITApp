@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/same-it-app/static/css/main.d8c88021.css",
+    "main.js": "/same-it-app/static/js/main.6614e6c1.js",
+    "static/js/415.c1e1a6ac.chunk.js": "/same-it-app/static/js/415.c1e1a6ac.chunk.js",
+    "index.html": "/same-it-app/index.html",
+    "main.d8c88021.css.map": "/same-it-app/static/css/main.d8c88021.css.map",
+    "main.6614e6c1.js.map": "/same-it-app/static/js/main.6614e6c1.js.map",
+    "415.c1e1a6ac.chunk.js.map": "/same-it-app/static/js/415.c1e1a6ac.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d8c88021.css",
+    "static/js/main.6614e6c1.js"
+  ]
+}
