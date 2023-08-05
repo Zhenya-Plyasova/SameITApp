@@ -1,21 +1,13 @@
+// import Box from '@mui/material/Box';
+// import TextField from '@mui/material/TextField';
+import BasicTextFields from 'components/CheckTTN/CheckTTN';
+
 const Home = () => {
-    return (
-      <>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            marginBottom: '100px',
-          }}
-        >
-          <h1>
-            Welcome to the APP!
-          </h1>
-        </div>
-      </>
-    );
-}
+  return (
+    <>
+      <BasicTextFields/>
+    </>
+  );
+};
 
 export default Home;
