@@ -19,3 +19,18 @@ export function getTrackingStatus(number) {
    });
     return data
 }
+
+export function getWarehouses(city) {
+   const data = axios.post('/', {
+     apiKey,
+     modelName: 'Address',
+     calledMethod: 'getWarehouses',
+     methodProperties: {
+       CityName: city,
+       Page: '1',
+       Limit: '50',
+       Language: 'UA',
+     },
+   }); 
+    return data;
+}
