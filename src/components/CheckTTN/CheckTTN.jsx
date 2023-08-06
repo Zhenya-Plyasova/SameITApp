@@ -1,27 +1,22 @@
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import { TtnStatus } from 'components/TTNStatus';
 import HistoryBlock from 'components/History/History';
+import SearchBar from 'components/SearchBar/SearchBar';
 
-export default function BasicTextFields() {
+export default function CheckTTN() {
   return (
-    <Box
-      component="form"
-      sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      //   autoComplete="off"
-    >
-      <TextField
-        id="outlined-basic"
-        label="Введіть номер ТТН"
-        variant="outlined"
-      />
-      <Button variant="contained">Отримати статус</Button>
-          <TtnStatus />
-          <HistoryBlock/>
-    </Box>
+    <>
+      <Box>
+        <SearchBar
+          label="Введіть номер ТТН"
+          buttonText="Отримати статус"
+          pattern="[0-9]*"
+        />
+      </Box>
+          {/* <div style={{ display: "flex" }}> */}
+        <TtnStatus />
+        <HistoryBlock />
+      {/* </div> */}
+    </>
   );
 }

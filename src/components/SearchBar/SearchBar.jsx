@@ -1,9 +1,8 @@
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-// import { Autocomplete } from '@mui/material';
 
-export default function SearchOffice() {
+export default function SearchBar(props) {
     return (
       <Box
         component="form"
@@ -11,14 +10,16 @@ export default function SearchOffice() {
           '& > :not(style)': { m: 1, width: '25ch' },
         }}
         noValidate
-        //   autoComplete="off"
       >
         <TextField
           id="outlined-basic"
-          label="Введіть назву нас. пункту"
+          label={props.label}
           variant="outlined"
+          size="small"
+          pattern={props.pattern}
+          required
         />
-        <Button variant="contained">шукати</Button>
+        <Button variant="contained">{props.buttonText}</Button>
       </Box>
     );
 };

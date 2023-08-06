@@ -1,24 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import Button from '@mui/material/Button';
-// import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import styled from 'styled-components';
-
-const StyledLink = styled(Button)`
-  color: black;
-
-  &.active {
-    color: blueviolet;
-  }
-`;
+// import css from './Navigation.module.css'
 
 export const Navigation = () => {
   return (
-    <header>
-      <nav>
+    <header >
+      <nav style={{paddingTop: 10, paddingBottom: 10}}>
         <NavLink to="/" type="button">
-          <StyledLink variant="outlined">
+          <Button variant="outlined" sx={{m: 1}}>
             Перевірити ТТН
-          </StyledLink>
+          </Button>
         </NavLink>
 
         <NavLink to="/offices">
