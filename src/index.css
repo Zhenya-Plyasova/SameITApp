@@ -21,8 +21,8 @@ a:hover {
 }
 
 body {
-  margin: 0;
-  display: flex;
+  /* margin: 0; */
+  /* display: flex; */
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -33,42 +33,6 @@ h1 {
   line-height: 1.1;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-text-align: initial !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  }
-
   a:hover {
-    color: #747bff;
+    color: #0b62e4;
   }
-
-button {
-  width: 196px;
-  height: 50px;
-  border-radius: 10.3108px;
-  font-family: 'Montserrat', sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
-  margin-left: auto;
-  margin-right: auto;
-  text-transform: uppercase;
-  background: #EBD8FF;
-}
-button:hover,
-button:focus {
-  background: #cfb7e9;
-  color: #2c2a2a;
-}
-
-button:active {
-  background: #ab97c0;
-  color: #141111;
-}
-}
