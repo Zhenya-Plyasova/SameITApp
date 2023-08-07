@@ -1,10 +1,10 @@
 import Box from '@mui/material/Box';
 
-export const TtnStatus = () => {
+export const TtnStatus = (props) => {
   return (
     <Box
-        sx={{
-        m:1,
+      sx={{
+        m: 1,
         maxWidth: 435,
         height: 300,
         marginBottom: '8px',
@@ -16,6 +16,8 @@ export const TtnStatus = () => {
           opacity: [0.9, 0.8, 0.7],
         },
       }}
-    />
+    >
+          {props.data.Status && <p>{props.data.Status}</p>}
+    </Box>
   );
 };
