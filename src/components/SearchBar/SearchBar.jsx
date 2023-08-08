@@ -39,7 +39,7 @@ export default function SearchBar(props) {
   const handleChange = ({ target }) => {
     const inputValue = target.value;
     const onlyNumbers = /^[0-9]*$/;
-    // const onlyUkrainianSymbols = 
+
     if (props.pattern === 'numeric' && !onlyNumbers.test(inputValue)) {
         return;
     }

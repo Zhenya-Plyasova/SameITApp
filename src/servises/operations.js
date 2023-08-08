@@ -20,14 +20,14 @@ export function getTrackingStatus(number) {
     return data
 }
 
-export function getWarehouses(city) {
+export function getWarehouses(city, page) {
    const data = axios.post('/', {
      apiKey,
      modelName: 'Address',
      calledMethod: 'getWarehouses',
      methodProperties: {
        CityName: city,
-       Page: '1',
+       Page: page,
        Limit: '50',
        Language: 'UA',
      },

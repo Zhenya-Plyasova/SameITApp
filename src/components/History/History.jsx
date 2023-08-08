@@ -6,7 +6,6 @@ import { TtnList } from 'components/TtnList';
 export default function HistoryBlock() {
   return (
     <Box
-      // component="span"
       sx={{
         m: 1,
         border: '1px dashed grey',

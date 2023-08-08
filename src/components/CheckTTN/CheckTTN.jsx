@@ -12,6 +12,7 @@ export default function CheckTTN() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const TtnQuery = searchParams.get('query') ?? '';
+//   const [declarationList, setDeclarationList]=useState([])
 
   useEffect(() => {
     const fetchTrackingData = async TtnQuery => {
