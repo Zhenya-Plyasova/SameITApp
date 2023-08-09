@@ -7,12 +7,11 @@ import Button from '@mui/material/Button';
 
 export default function SearchBar(props) {
   const [value, setValue] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query') ?? '';
+  const [, setSearchParams] = useSearchParams();
+  // const query = searchParams.get('query') ?? '';
   const numericExpression = /^\d{14}$/;
   const ukrainianLettersExpression = /^[А-Яа-яІіЇїЄєҐґ\s]*$/;
   const [isValid, setIsValid] = useState(true);
-  console.log(query);
 
   const updateQueryString = e => {
     e.preventDefault();
@@ -33,7 +32,6 @@ export default function SearchBar(props) {
     } else {
       setIsValid(false);
     }
-    console.log(query);
   };
 
   const handleChange = ({ target }) => {
@@ -63,7 +61,6 @@ export default function SearchBar(props) {
         label={props.label}
         variant="outlined"
         size="small"
-        // pattern={props.pattern}
         inputMode={props.pattern === 'numeric' ? 'numeric' : 'text'}
         required
         onChange={handleChange}

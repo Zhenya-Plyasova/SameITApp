@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import { Typography } from '@mui/material';
 import { TtnList } from 'components/TtnList';
 
-export default function HistoryBlock() {
+export default function HistoryBlock({ ttnList, onClick }) {
   return (
     <Box
       sx={{
@@ -13,12 +13,15 @@ export default function HistoryBlock() {
         maxWidth: 435,
       }}
     >
-      <Typography variant="h6" color="primary"
-      sx={{ml:1}}>
+      <Typography variant="h6" color="primary" sx={{ ml: 1 }}>
         Історія
       </Typography>
-      <TtnList/>
-      <Button>Очистити</Button>
+      {ttnList.length && (
+        <>
+          <TtnList ttnList={ttnList} />
+          <Button onClick={onClick}>Очистити</Button>
+        </>
+      )}
     </Box>
   );
 }
