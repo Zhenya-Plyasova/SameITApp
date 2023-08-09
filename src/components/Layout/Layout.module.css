@@ -1,6 +1,4 @@
-/* .mainWrapper{
-    width: 100vw;
-
-    margin: 0 auto;
-    align-items: baseline;
-} */
+.mainWrapper{
+display: block;
+justify-content: center;
+}

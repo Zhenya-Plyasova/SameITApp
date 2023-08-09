@@ -1,40 +1,41 @@
 import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
+import CircularIndeterminate from './СircularIndeterminate';
 
-export const TtnStatus = props => {
+export const TtnStatus = ({data, isLoading}) => {
     const [negativeStatus, setNegativeStatus] = useState(false);
     const [recipientHeader, setRecipientHeader] = useState(false);
     useEffect(() => {
-      if ([1, 2, 3, 112].includes(parseInt(props.data.StatusCode))) {
+      if ([1, 2, 3, 112].includes(parseInt(data.StatusCode))) {
         setNegativeStatus(true);
       } else {
         setNegativeStatus(false);
       }
-          if ([4, 41, 5, 6, 101].includes(parseInt(props.data.StatusCode))) {
+          if ([4, 41, 5, 6, 101].includes(parseInt(data.StatusCode))) {
             setRecipientHeader('Прямує до');
-          } else if ([7, 8].includes(parseInt(props.data.StatusCode))) {
+          } else if ([7, 8].includes(parseInt(data.StatusCode))) {
             setRecipientHeader('Прибуло');
           } else if (
-            [9, 10, 11, 106].includes(parseInt(props.data.StatusCode))
+            [9, 10, 11, 106].includes(parseInt(data.StatusCode))
           ) {
             setRecipientHeader('Отримано');
           } else {
             setRecipientHeader('Адреса доставки');
           }
-        }, [props.data.StatusCode]);
+        }, [data.StatusCode]);
 
-  const InformBlock = props => {
+  const InformBlock = (props) => {
     return (
       <div
         style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}
-      >
-        <Typography variant="body1" color="grey" sx={{ ml: 1 }}>
-          <span style={{ color: '#1976d2', fontWeight: 'bold' }}>
-            {props.header}:{' '}
-          </span>
-          {props.value}
-        </Typography>
+        >
+                <Typography variant="body1" color="grey" sx={{ ml: 1 }}>
+                    <span style={{ color: '#1976d2', fontWeight: 'bold' }}>
+                        {props.header}:{' '}
+                    </span>
+                    {props.value}
+                </Typography>
       </div>
     );
   };
@@ -54,17 +55,18 @@ export const TtnStatus = props => {
           opacity: [0.9, 0.8, 0.7],
         },
       }}
-    >
-      {props.data.Status && (
+      >
+      {isLoading&&<CircularIndeterminate/>}
+      {data.Status && !isLoading&&(
         <>
-          <InformBlock header={'Статус'} value={props.data.Status} />
+          <InformBlock header={'Статус'} value={data.Status} />
                   {!negativeStatus&&(<><InformBlock
             header={'Відправлено'}
-            value={props.data.WarehouseSender}
+            value={data.WarehouseSender}
           />
           <InformBlock
             header={recipientHeader}
-            value={props.data.WarehouseRecipient}
+            value={data.WarehouseRecipient}
           /></>)}
         </>
       )}
