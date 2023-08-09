@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import SearchBar from 'components/SearchBar/SearchBar';
 import { getWarehouses } from 'servises/operations';
 import { OfficeList } from 'components/OfficeList/OfficeList';
+import CircularIndeterminate from 'components/СircularIndeterminate';
 
 const FindOffices
   = () => {
@@ -17,7 +18,8 @@ const FindOffices
 
     useEffect(() => {
       setWarehouses([]);
-      setPage(1)
+      setPage(1);
+      setHasMore(false);
     }, [cityQuery]);
     
     useEffect(() => {
@@ -25,12 +27,14 @@ const FindOffices
         try {
           if (city.length !== 0) {
             setIsLoading(true);
-            let newItems = [];
             const response = await getWarehouses(city, page);
-            console.log(response.data.data);
-            newItems = response.data.data;
-            setWarehouses([...warehouses, ...newItems]);
-            if (page === 100) {
+            const newItems = response.data.data;
+            if (page === 1) {
+              setWarehouses(newItems);
+            } else {
+              setWarehouses(prevWarehouses => [...prevWarehouses, ...newItems]);
+            }
+            if (newItems.length === 0) {
               setHasMore(false);
             }
           }
@@ -49,7 +53,7 @@ const FindOffices
       const scrollHeight = document.documentElement.scrollHeight;
       const clientHeight = document.documentElement.clientHeight;
 
-      if (scrollTop + clientHeight >= scrollHeight) {
+      if (scrollTop + clientHeight+1 >= scrollHeight) {
         setPage(page + 1);
       }
     };
@@ -70,7 +74,7 @@ const FindOffices
         </div>
         {error && <p>Something went wrong...</p>}
         <OfficeList warehouses={warehouses} />
-        {isLoading && <p> Loading...</p>}
+        {isLoading && <CircularIndeterminate/>}
       </>
     );
 };
