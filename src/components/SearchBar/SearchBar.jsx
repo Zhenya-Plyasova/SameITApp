@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
@@ -8,10 +8,13 @@ import Button from '@mui/material/Button';
 export default function SearchBar(props) {
   const [value, setValue] = useState('');
   const [, setSearchParams] = useSearchParams();
-  // const query = searchParams.get('query') ?? '';
   const numericExpression = /^\d{14}$/;
   const ukrainianLettersExpression = /^[А-Яа-яІіЇїЄєҐґ\s]*$/;
   const [isValid, setIsValid] = useState(true);
+
+  useEffect(() => {
+    setValue(props.initialValue || '');
+  }, [props.initialValue]);
 
   const updateQueryString = e => {
     e.preventDefault();
