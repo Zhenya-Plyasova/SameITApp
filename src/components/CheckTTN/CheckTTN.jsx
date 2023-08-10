@@ -8,13 +8,18 @@ import SearchBar from 'components/SearchBar/SearchBar';
 
 export default function CheckTTN() {
   const [declarationStatus, setDeclarationStatus] = useState({});
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [error, setError] = useState('');
+  const [initialValue, setInitialValue] = useState('');
   const [ttnList, setTtnList] = useState(() => {
     return JSON.parse(localStorage.getItem('ttnList')) ?? [];
   });
   const [isLoading, setIsLoading] = useState(false);
   const TtnQuery = searchParams.get('query') ?? '';
+  const onButtonClick = ttnItem => {
+    setSearchParams({ query: ttnItem });
+    setInitialValue(ttnItem);
+  };
 
   useEffect(() => {
     const fetchTrackingData = async TtnQuery => {
@@ -34,17 +39,17 @@ export default function CheckTTN() {
     TtnQuery && fetchTrackingData(TtnQuery);
     // eslint-disable-next-line
   }, [TtnQuery]);
-    
-      useEffect(() => {
-        ttnList.length !== 0 &&
-          localStorage.setItem('ttnList', JSON.stringify(ttnList));
-      }, [ttnList]);
-    
-    const removeTtnList = () => {
-        localStorage.removeItem('ttnList');
-        setTtnList([]);
-    };
-    
+
+  useEffect(() => {
+    ttnList.length !== 0 &&
+      localStorage.setItem('ttnList', JSON.stringify(ttnList));
+  }, [ttnList]);
+
+  const removeTtnList = () => {
+    localStorage.removeItem('ttnList');
+    setTtnList([]);
+  };
+
   return (
     <>
       <Box>
@@ -52,11 +57,16 @@ export default function CheckTTN() {
           label="Введіть номер ТТН"
           buttonText="Отримати статус"
           pattern="numeric"
+          initialValue={initialValue}
         />
       </Box>
       {error && <p>Something went wrong...</p>}
       <TtnStatus data={declarationStatus} isLoading={isLoading} />
-      <HistoryBlock ttnList={ttnList} onClick={removeTtnList} />
+      <HistoryBlock
+        ttnList={ttnList}
+        onClick={removeTtnList}
+        onButtonClick={onButtonClick}
+      />
     </>
   );
 }
