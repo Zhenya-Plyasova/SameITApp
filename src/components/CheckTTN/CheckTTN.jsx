@@ -10,15 +10,20 @@ export default function CheckTTN() {
   const [declarationStatus, setDeclarationStatus] = useState({});
   const [searchParams] = useSearchParams();
   const [error, setError] = useState('');
+  const [ttnList, setTtnList] = useState(() => {
+    return JSON.parse(localStorage.getItem('ttnList')) ?? [];
+  });
   const [isLoading, setIsLoading] = useState(false);
   const TtnQuery = searchParams.get('query') ?? '';
 
   useEffect(() => {
     const fetchTrackingData = async TtnQuery => {
-        try {
+      try {
         setIsLoading(true);
+        if (!ttnList.includes(TtnQuery)) {
+          setTtnList(prevTtnList => [...prevTtnList, TtnQuery]);
+        }
         const response = await getTrackingStatus(TtnQuery);
-        console.log(response.data.data[0]);
         setDeclarationStatus(response.data.data[0]);
       } catch (error) {
         setError(error.message);
@@ -27,7 +32,19 @@ export default function CheckTTN() {
       }
     };
     TtnQuery && fetchTrackingData(TtnQuery);
+    // eslint-disable-next-line
   }, [TtnQuery]);
+    
+      useEffect(() => {
+        ttnList.length !== 0 &&
+          localStorage.setItem('ttnList', JSON.stringify(ttnList));
+      }, [ttnList]);
+    
+    const removeTtnList = () => {
+        localStorage.removeItem('ttnList');
+        setTtnList([]);
+    };
+    
   return (
     <>
       <Box>
@@ -38,8 +55,8 @@ export default function CheckTTN() {
         />
       </Box>
       {error && <p>Something went wrong...</p>}
-        <TtnStatus data={declarationStatus} isLoading={isLoading} />
-      <HistoryBlock />
+      <TtnStatus data={declarationStatus} isLoading={isLoading} />
+      <HistoryBlock ttnList={ttnList} onClick={removeTtnList} />
     </>
   );
 }
