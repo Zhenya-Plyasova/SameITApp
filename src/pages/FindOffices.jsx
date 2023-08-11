@@ -65,7 +65,14 @@ const FindOffices
 
     return (
       <>
-        <div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
           <SearchBar
             label="Оберіть насел. пункт"
             buttonText="знайти"
@@ -74,7 +81,7 @@ const FindOffices
         </div>
         {error && <p>Something went wrong...</p>}
         <OfficeList warehouses={warehouses} />
-        {isLoading && <CircularIndeterminate/>}
+        {isLoading && <CircularIndeterminate />}
       </>
     );
 };

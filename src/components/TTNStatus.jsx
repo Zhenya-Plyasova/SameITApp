@@ -44,8 +44,8 @@ export const TtnStatus = ({data, isLoading}) => {
       sx={{
         m: 1,
         p: 1,
-        maxWidth: 435,
-        height: 300,
+        maxWidth: 420,
+        height: 250,
         marginBottom: '8px',
         backgroundColor: 'azure',
         border: '1px dashed lightgrey',
@@ -55,19 +55,26 @@ export const TtnStatus = ({data, isLoading}) => {
           opacity: [0.9, 0.8, 0.7],
         },
       }}
-      >
-      {isLoading&&<CircularIndeterminate/>}
-      {data.Status && !isLoading&&(
+    >
+      {isLoading && <CircularIndeterminate />}
+      {!data.Status && !isLoading && (
+        <InformBlock header={'тут буде інформація про статус доставки'} />
+      )}
+      {data.Status && !isLoading && (
         <>
           <InformBlock header={'Статус'} value={data.Status} />
-                  {!negativeStatus&&(<><InformBlock
-            header={'Відправлено'}
-            value={data.WarehouseSender}
-          />
-          <InformBlock
-            header={recipientHeader}
-            value={data.WarehouseRecipient}
-          /></>)}
+          {!negativeStatus && (
+            <>
+              <InformBlock
+                header={'Відправлено'}
+                value={data.WarehouseSender}
+              />
+              <InformBlock
+                header={recipientHeader}
+                value={data.WarehouseRecipient}
+              />
+            </>
+          )}
         </>
       )}
     </Box>

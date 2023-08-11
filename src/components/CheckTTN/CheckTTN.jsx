@@ -51,7 +51,7 @@ export default function CheckTTN() {
   };
 
   return (
-    <>
+    <div>
       <Box>
         <SearchBar
           label="Введіть номер ТТН"
@@ -67,6 +67,6 @@ export default function CheckTTN() {
         onClick={removeTtnList}
         onButtonClick={onButtonClick}
       />
-    </>
+    </div>
   );
 }
