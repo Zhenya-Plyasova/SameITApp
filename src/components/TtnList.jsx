@@ -3,12 +3,13 @@ import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
+
 import ListItemText from '@mui/material/ListItemText';
 
 export const TtnList = ({ ttnList, onButtonClick }) => {
 
  return (
-   <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+   <Box sx={{justifyContent: 'center'}}>
      <nav aria-label="secondary mailbox folders">
        <List>
          {ttnList.map(ttnItem => (
