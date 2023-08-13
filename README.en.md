@@ -7,7 +7,6 @@ HTML
 CSS
 JavaScript
 React
-React Redux
 REST API
 
 Developer: Eugenia Pliasova
